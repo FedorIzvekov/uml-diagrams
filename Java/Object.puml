@@ -1,0 +1,14 @@
+@startuml
+class Object {
+  + final getClass(): Class
+  + toString(): String
+  + equals(Object obj): boolean
+  + hashCode(): int
+  + notify(): void
+  + notifyAll(): void
+  + wait(): void
+  + wait(long timeout): void
+  + wait(long timeout, int nanos): void
+  # clone(): Object
+}
+@enduml
