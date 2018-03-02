@@ -1,0 +1,20 @@
+@startuml
+
+title Maps Hierarchy
+
+skinparam class {
+    BackgroundColor orange
+}
+
+interface Map<K, V> #Technology
+abstract class Dictionary<K, V> #Motivation
+abstract class AbstractMap<K, V> #Motivation implements Map
+
+interface SortedMap<K, V> #Technology extends Map
+interface NavigableMap<K, V> #Technology extends SortedMap
+
+class Hashtable<K, V> extends Dictionary implements Map
+class TreeMap<K, V> extends AbstractMap implements NavigableMap
+class HashMap<K, V> extends AbstractMap implements Map
+class LinkedHashMap<K, V> extends HashMap implements Map
+@enduml
