@@ -1,0 +1,34 @@
+@startuml
+
+title Collections Hierarchy
+
+skinparam class {
+BackgroundColor<<set>> strategy
+BackgroundColor<<list>> tomato
+}
+
+interface Iterable #technology
+interface Collection #technology extends Iterable
+
+abstract class AbstractCollection #motivation implements Collection
+
+interface Set <<set>> #technology extends Collection
+abstract class AbstractSet <<set>> #motivation extends AbstractCollection implements Set
+class HashSet <<set>> extends AbstractSet implements Set
+class LinkedHashSet <<set>> extends HashSet implements Set
+interface SortedSet <<set>> #technology extends Set
+interface NavigableSet <<set>> #technology extends SortedSet
+class TreeSet <<set>> extends AbstractSet implements NavigableSet
+
+interface Queue <<queue>> #technology extends Collection
+interface Deque <<queue>> #technology extends Queue
+
+interface List <<list>> #technology extends Collection
+abstract class AbstractList <<list>> #motivation extends AbstractCollection implements List
+abstract class AbstractSequentialList <<list>> #motivation extends AbstractList
+class LinkedList <<list>> #orange extends AbstractSequentialList implements List, Deque
+class ArrayList <<list>> extends AbstractList implements List
+class Vector <<list>> extends AbstractList implements List
+class Stack <<list>> extends Vector
+
+@enduml
