@@ -1,0 +1,34 @@
+@startuml
+
+title SOLID Open/Closed
+
+skinparam class {
+    BackgroundColor strategy
+}
+
+abstract class Shape #motivation {
+    + getArea(): double
+}
+
+class Circle extends Shape{
+    - radius: double
+    + getArea(): double
+}
+
+class Rectangle extends Shape{
+    - width: double
+    - height: double
+    + getArea(): double
+}
+
+class AreaCalculator {
+    + getTotalArea(shapes: Shape[]): double
+}
+
+AreaCalculator o-- Shape
+
+note top of AreaCalculator
+    "The class is open for extension with new shapes, but closed for modification of its logic"
+end note
+
+@enduml

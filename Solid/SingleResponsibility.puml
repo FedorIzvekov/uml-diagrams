@@ -1,0 +1,51 @@
+@startuml
+
+title SOLID Single Responsibility
+
+skinparam class {
+    BackgroundColor strategy
+}
+
+class Book {
+    - title: string
+    - author: string
+    - content: string
+    + setTitle(title: string): void
+    + setAuthor(author: string): void
+    + setContent(content: string): void
+    + getTitle(): string
+    + getAuthor(): string
+    + getContent(): string
+}
+
+class BookService {
+    + create(book: Book): void
+    + delete(book: Book): void
+    + updateUser(): void
+    + getById():Book
+}
+
+class BookRepository {
+    + save(book: Book): Book
+    + delete(book: Book): void
+    + getById(): Book
+}
+
+Book --> BookRepository
+Book --> BookService
+BookService <-> BookRepository : Book
+
+
+note top of Book
+    "The class is responsible only for information about the entity"
+end note
+
+note top of BookRepository
+    "The class is responsible only for CRUD operations in the database or storage"
+end note
+
+note top of BookService
+    "The class is responsible only for executing the business logic"
+end note
+
+@enduml

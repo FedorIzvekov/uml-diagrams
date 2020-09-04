@@ -1,0 +1,34 @@
+@startuml
+
+title SOLID Interface Segregation
+
+skinparam class {
+    BackgroundColor strategy
+}
+
+interface Printable #technology  {
+    + print(): void
+}
+
+interface Scanable #technology {
+    + scan(): void
+}
+
+class Printer implements Printable {
+    + print(): void
+}
+
+class Scanner implements Scanable {
+    + scan(): void
+}
+
+class AllInOnePrinter implements Printable, Scanable {
+    + print(): void
+    + scan(): void
+}
+
+note top of Printable
+    "Interfaces do not contain unnecessary methods that implementing classes do not need"
+end note
+
+@enduml

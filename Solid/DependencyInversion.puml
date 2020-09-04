@@ -1,0 +1,33 @@
+@startuml
+
+title SOLID Dependency Inversion
+
+skinparam class {
+    BackgroundColor strategy
+}
+
+interface Database #technology {
+    + save(data: string): void
+}
+
+class PostgreSqlDatabase implements Database{
+    + save(data: string): void
+}
+
+class OracleDatabase implements Database{
+    + save(data: string): void
+}
+
+class DataService {
+    - database: Database
+    + DataService(database: Database)
+    + saveData(data: string): void
+}
+
+DataService o- Database
+
+note top of DataService
+    "The high-level class depends on abstraction, not on specific implementation classes of the lower level"
+end note
+
+@enduml

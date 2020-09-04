@@ -1,0 +1,34 @@
+@startuml
+
+title SOLID Liskov Substitution
+
+skinparam class {
+    BackgroundColor strategy
+}
+
+abstract class Shape #motivation {
+    + getArea(): double
+}
+
+class Circle extends Shape{
+    - radius: double
+    + getArea(): double
+}
+
+class Rectangle extends Shape{
+    - width: double
+    - height: double
+    + getArea(): double
+}
+
+class AreaCalculator {
+    + getTotalArea(shapes: Shape[]): double
+}
+
+AreaCalculator o-right- Shape
+
+note top of Shape
+    "Objects of subclass can be used wherever objects of the base class are used, without disrupting the program's functionality"
+end note
+
+@enduml
